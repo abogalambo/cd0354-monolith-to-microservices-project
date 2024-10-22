@@ -15,9 +15,16 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: frontend
-          image: abogalambo/udagram-frontend:v2
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
+      - name: frontend
+        image: abogalambo/udagram-frontend:v2
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "2048Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
       restartPolicy: Always

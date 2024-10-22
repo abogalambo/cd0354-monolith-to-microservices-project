@@ -15,9 +15,16 @@ spec:
         app: reverseproxy
     spec:
       containers:
-        - image: abogalambo/udagram-reverseproxy:v1
-          name: reverseproxy
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
+      - image: abogalambo/udagram-reverseproxy:v1
+        name: reverseproxy
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "2048Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8080
       restartPolicy: Always
